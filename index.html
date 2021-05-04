@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twiddler</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./scripts/jquery.js">
+  </script>
+  <script src="./scripts/dataGenerator.js"></script>
+  <script src="./scripts/moment.js"></script>
+  <script src="./scripts/newsData.js"></script>
+</head>
+
+<body>
+  <!-- Landing Page -->
+  <div class="landing-container">
+    <div class="logo-panel">
+      <ul>
+        <li>
+          <img src="./assets/icons/login/search.svg" />
+          <h2>Follow your interests.</h2>
+        </li>
+        <li>
+          <img src="./assets/icons/login/users.svg" />
+          <h2>Hear what people are talking about.</h2>
+        </li>
+        <li>
+          <img src="./assets/icons/login/message-circle.svg" />
+          <h2>Join the conversation.</h2>
+        </li>
+      </ul>
+    </div>
+    <form class="login-panel-container">
+      <div class="login-form">
+        <input type="text" placeholder="username" class="visitor-name" required>
+        <div class="password-input">
+          <input type="password" name="password" value="alknfaewoikn" placeholder="password" autocomplete="on">
+
+          <h6>
+            <a href="#!">Forgot password?</a>
+          </h6>
+
+        </div>
+        <button class="login-button" id="loginButton">Login</button>
+      </div>
+
+      <div class="login-panel">
+        <div class="login-signup-panel">
+          <img src="./assets/icons/login/Twitter_Logo_Blue.svg" alt="">
+          <h2>See what's happening in the world right now.</h2>
+          <p>Join twiddler today.</p>
+          <button class="join-button landing-button">Join</button>
+          </br>
+          <button class="login-button landing-button">Login</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <!-- User Home -->
+  <div class="home-container">
+
+    <!--NAV- left frame-->
+    <div class="nav">
+      <ul>
+        <li class="sidebar-link home-link" id="twiddleLogo"><img src=" ./assets/icons/sidebar-icons/twitter.svg" /></li>
+        <li class="sidebar-link highlight-hover home-link side-home"><a href="#!"><img
+              src=" ./assets/icons/sidebar-icons/home-white.svg" id="sidebarLinkImg" />Home</a></li>
+        <li class="sidebar-link highlight-hover side-hash"><a href="https://www.atlasobscura.com/" target="blank"><img
+              src="./assets/icons/sidebar-icons/hash-white.svg" />Explore</a></li>
+        <li class="sidebar-link highlight-hover side-bell"><a href="#!"><img
+              src="./assets/icons/sidebar-icons/bell-white.svg" />Notifications</a></li>
+        <li class="sidebar-link highlight-hover side-mail"><a href="https://gmail.com" target="blank"><img
+              src="./assets/icons/sidebar-icons/mail-white.svg" />Messages</a></li>
+        <li class="sidebar-link highlight-hover side-bookmark"><a href="https://todoist.com/" target="blank"><img
+              src="./assets/icons/sidebar-icons/bookmark-white.svg" />Bookmarks</a></li>
+        <li class="sidebar-link highlight-hover side-file-text"><a href="https://getpocket.com/firefox/"
+            target="blank"><img src="./assets/icons/sidebar-icons/file-text-white.svg" />Lists</a></li>
+        <li class="sidebar-link highlight-hover side-user"><a href="https://github.com/timoshishi" target="blank"><img
+              src="./assets/icons/sidebar-icons/user-white.svg" />Profile</a></li>
+        <li class="sidebar-link highlight-hover side-more-horizontal"><a href="#!"><img
+              src="./assets/icons/sidebar-icons/more-horizontal-white.svg" />More</a>
+        </li>
+        <button class="sidebar-tweet-btn">Tweet</button>
+      </ul>
+    </div>
+
+    <!--FEED - center frame-->
+    <div class="main">
+      <div class="header">
+        <div class="header-links">
+          <h3 class="home-link">Home</h3>
+          <span><img src="./assets/icons/sidebar-icons/twitter.svg" class="home-link" /></span>
+        </div>
+      </div>
+
+      <!-- Add Tweet Area -->
+      <div class=" tweet-input-container ">
+        <img class="gravatar" src="./assets/user-images/user-image.jpeg" alt="user avatar" />
+        <form class="tweet-input-area">
+          <!-- shown on focus -->
+          <input class='tweet-input' name='tweetInput' placeholder="What's happening?" maxlength="140" required />
+          <div class="new-tweet-info-span new-tweet-info  highlight-hover">
+            <img href="#!" src="./assets/icons/new-tweet/globe.svg" />
+            <p>Everyone can reply</p>
+          </div>
+          <hr class="new-tweet-info" />
+
+          <div class="new-tweet-actions">
+            <ul class="new-tweet-icons">
+              <li class="highlight-hover"><a href="#!"><img src="./assets/icons/new-tweet/image.svg" /></a></li>
+              <li class="highlight-hover"><a href="#!"><img src="./assets/icons/new-tweet/film.svg" /></a></li>
+              <li class="highlight-hover"><a href="#!"><img src="./assets/icons/new-tweet/bar-chart-2.svg" /></a></li>
+              <li class="highlight-hover"><a href="#!"><img src="./assets/icons/new-tweet/smile.svg" /></a></li>
+              <li class="highlight-hover"><a href="#!"><img src="./assets/icons/new-tweet/calendar.svg" /></a></li>
+            </ul>
+            <button class='submit-button' disabled>Tweet</button>
+          </div>
+        </form>
+      </div>
+      <!-- tweets appended here by jQuery -->
+      <div id="tweetStream" class="tweet-stream"></div>
+    </div>
+
+    <!--NEWS - right panel-->
+    <div class="news-follow">
+      <form class="search-bar">
+        <input type="text" class="search-input" placeholder="   Search Twiddler" />
+        <button type="submit" class="search-icon"><img src="assets/icons/sidebar-icons/search-white.svg" /></button>
+        <div class="logout">Log out</div>
+      </form>
+      <div class="news-feed">
+        <h3>What's happening</h3>
+        <div class="stories"></div>
+        <div class="trending-hash"></div>
+        <div class='trending-tech'></div>
+      </div>
+    </div>
+  </div>
+  <script src="./scripts/scripts.js"></script>
+</body>
+
+</html>
